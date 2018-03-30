@@ -3,21 +3,26 @@ import React, { Component } from 'react';
 import './App.css';
 import GenericButton from './Button';
 
-
+function Result (props)  {
+  return(
+    <div>{props.result}</div>
+  )
+};
 
 class App extends Component {
 
   state = {counter:0};
 
-  handleButtonClick = () => {
+  handleButtonClick = (i) => {
     // this.setState({
     //   counter:this.state.counter +1
     // })
     this.setState((prevState)=>({
-      counter: prevState.counter+1
+      counter: prevState.counter+i
     }));
   };
 
+  
 
   render() {
     return (
@@ -30,7 +35,9 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p> */}
-        <GenericButton onClick={()=>this.handleButtonClick()} value={this.state.counter}/>
+        <GenericButton onClick={()=>this.handleButtonClick(1)} incrementValue={1}/>
+        <GenericButton onClick={()=>this.handleButtonClick(2)} incrementValue={2}/>
+        <Result result={this.state.counter}/>
       </div>
     );
   }

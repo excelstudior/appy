@@ -8,7 +8,7 @@ class GenericButton extends Component {
     render(){
         return(
             <button onClick={()=>this.props.onClick()} >
-                {this.props.value}
+                {this.props.incrementValue}
             </button>
         )
     }
