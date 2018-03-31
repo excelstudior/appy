@@ -2,6 +2,30 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './App.css';
 import GenericButton from './Button';
+import { CardList } from './Card';
+
+let cardData=[
+  { name:"excelstudior",
+    url: "https://avatars3.githubusercontent.com/u/20236228?v=4",
+    company:"WFS",
+  },
+  { name:"excelstudior",
+    url: "https://avatars3.githubusercontent.com/u/20236228?v=4",
+    company:"WFS",
+  },
+  { name:"excelstudior",
+    url: "https://avatars3.githubusercontent.com/u/20236228?v=4",
+    company:"WFS",
+  },
+  { name:"excelstudior",
+    url: "https://avatars3.githubusercontent.com/u/20236228?v=4",
+    company:"WFS",
+  },
+  { name:"excelstudior",
+    url: "https://avatars3.githubusercontent.com/u/20236228?v=4",
+    company:"WFS",
+  }
+];
 
 function Result (props)  {
   return(
@@ -38,6 +62,7 @@ class App extends Component {
         <GenericButton onClick={()=>this.handleButtonClick(1)} incrementValue={1}/>
         <GenericButton onClick={()=>this.handleButtonClick(2)} incrementValue={2}/>
         <Result result={this.state.counter}/>
+        <CardList cards={cardData}/>
       </div>
     );
   }
