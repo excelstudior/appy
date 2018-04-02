@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import GenericButton from './Button';
 import { CardList } from './Card';
+import Form from './Form';
 
 let cardData=[
   { name:"excelstudior",
@@ -46,6 +47,10 @@ class App extends Component {
     }));
   };
 
+  // handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   console.log('Event: Form Submit');
+  // };
   
 
   render() {
@@ -58,7 +63,11 @@ class App extends Component {
         </div>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
-        </p> */}
+        </p> 
+        
+        */}
+        {/* <Form onSubmit={()=>this.handleSubmit(event)}/> */}
+        <Form/>
         <GenericButton onClick={()=>this.handleButtonClick(1)} incrementValue={1}/>
         <GenericButton onClick={()=>this.handleButtonClick(2)} incrementValue={2}/>
         <Result result={this.state.counter}/>

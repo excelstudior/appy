@@ -17,7 +17,7 @@ const Card = (props) =>{
 export const CardList = (props) => {
     return (
         <div>
-            {props.cards.map (card => <Card {...card}/>)}
+            {props.cards.map (card => <Card key={card.id} {...card}/>)}
         </div>
     )
 };
