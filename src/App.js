@@ -4,6 +4,7 @@ import './App.css';
 import GenericButton from './Button';
 import { CardList } from './Card';
 import Form from './Form';
+import axios from 'axios';
 
 let cardData=[
   { name:"excelstudior",
@@ -34,9 +35,29 @@ function Result (props)  {
   )
 };
 
+function TestButton (props) {
+  return(
+    <button onClick={props.onClick}>Test Fetch</button>
+  )
+}
+function TestForm (props){
+  return(
+    <form onSubmit={props.onSubmit}>
+            {/* <form onSubmit={()=>this.handleSubmit(event)}> */}
+                <input type="text" placeholder="Github username"
+                       value={props.userName}
+                       onChange={props.onChange}
+                       //onChange={()=>this.props.onChange()}
+                       />
+                <button type="submit">Add Card</button>
+    </form>
+  )
+}
+
 class App extends Component {
 
-  state = {counter:0};
+  state = {counter:0,
+            userName:''};
 
   handleButtonClick = (i) => {
     // this.setState({
@@ -47,11 +68,30 @@ class App extends Component {
     }));
   };
 
+  onChange=(event)=>{
+    this.setState({ userName:event.target.value})
+  };
   // handleSubmit = (event) => {
   //   event.preventDefault();
   //   console.log('Event: Form Submit');
   // };
-  
+  testButtonOnClick = (inputValue) =>{
+    // fetch("https://api.github.com/users/excelstudior")
+    //     .then(function (response) {
+    //         alert(response.data);
+    //         console.log(response);
+    //       });
+    console.log(inputValue);
+    axios.get(`https://api.github.com/users/excelstudior`)
+    .then(function(response){
+        alert(response);
+        console.log(response);
+    })
+  }
+
+  onFormInputChange =()=>{
+    console.log("input log change");
+  }
 
   render() {
     return (
@@ -67,11 +107,13 @@ class App extends Component {
         
         */}
         {/* <Form onSubmit={()=>this.handleSubmit(event)}/> */}
-        <Form/>
+        <Form onSubmit={()=>this.testButtonOnClick()}/>
         <GenericButton onClick={()=>this.handleButtonClick(1)} incrementValue={1}/>
         <GenericButton onClick={()=>this.handleButtonClick(2)} incrementValue={2}/>
         <Result result={this.state.counter}/>
         <CardList cards={cardData}/>
+        <TestButton onClick={()=>this.testButtonOnClick()}/>
+        <TestForm onSubmit={()=>this.testButtonOnClick()} onChange={()=>this.onChange()}/>
       </div>
     );
   }

@@ -11,4 +11,4 @@ class GenericButton extends Component {
     }
 }
 
-module.exports=GenericButton;
+module.exports = GenericButton;
